@@ -1,4 +1,4 @@
-const API_URL = 'https://bntvwv77v9.execute-api.us-east-1.amazonaws.com/dev';
+const API_URL = 'https://bntvwv77v9.execute-api.us-east-1.amazonaws.com/dev/contact-02/id';
  
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.ebook-download-form');
