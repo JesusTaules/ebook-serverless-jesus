@@ -19,9 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(payload)
       });
  
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error ?? 'Error al enviar');
- 
+      const responseData = await response.json();
+      const result = typeof responseData.body === 'string'
+        ? JSON.parse(responseData.body)
+        : responseData.body ?? responseData;
+
+      if (!response.ok) throw new Error(result.error ?? result.message ?? 'Error al enviar');
+      if (!result.message) throw new Error('La API respondió sin devolver un mensaje.');
+
       alert(result.message);
       form.reset();
     } catch (error) {
